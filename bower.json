@@ -1,5 +1,5 @@
 {
-    "name": "amcharts",
+    "name": "ng-amcharts",
     "version": "3.21.11",
     "main": "./dist/amcharts/amcharts.js"
 }
