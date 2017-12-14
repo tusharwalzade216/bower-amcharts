@@ -1,7 +1,493 @@
 # JavaScript Charts and Stock Chart Change Log
 
-## 3.15.2
 
+## 3.21.11
+
+*    Some rendering issues because of a bug in new Chrome release fixed.
+*    Stock chart event stacking issue fixed.
+
+
+## 3.21.8
+
+*    accessibleDescription added to AmChart class. It is added as <desc> element of a SVG. Most of screen readers will read this description.
+*    Bug fix: link to amcharts (free version) was not updating it’s position if chart area was resized.
+*    Bug fix: gridAboveGraphs = true was not working properly on Radar chart.
+*    Bug fix: negative fill color of a line graph could be slightly visible on a base value line.
+*    Bug fix: stock events which went after event with showOnAxis = true were all stacked on this event even if they were not supposed to be 		on the axis.
+*    Bug fix: stock chart with value balloons disabled was not showing event description in a tooltip.
+
+
+## 3.21.7
+
+*    Bug fix: sometimes, if a scrollbar was moved fast to the right/left edge, the chart showed incorrect selection.
+*    Bug fix: in some cases on radar chart, if value axis was logarithmic, one extra grid out of chart bounds was shown.
+*    Bug fix: OHLC chart lines can display roll-over balloons now.
+*    Bug fix: Trendlines were not showing balloon if thickness of a line was 10 or bigger.
+
+
+## 3.21.6
+
+*    Bug fix: with ChartCursor property updateOnReleaseOnly set to true Chart scrollbar’s selection used to increase after dragging (only 			with parseDates = false).
+*    Bug fix: calling validateNow(true) was not zooming out.
+*    Bug fix: duration in the value axis balloon could display decimal values for minutes.
+*    Bug fix: with Legend’s property useMarkerColorForLabels set to true label did not change color when graph was hidden.
+
+
+## 3.21.5
+
+*    Bug fix: cursor balloon sometimes was not displayed when cursor was close to the edge.
+
+
+## 3.21.4
+
+*    Bug fix: in case ignoreAxisWidth was set to true, vertical axis title was not displayed.
+*    Bug fix: value axis of serial and gantt charts was not scrolled properly if maxSelectedSeries was set to some number.
+*    Bug fix: Gauge arrow was not appearing when clicking on the legend entry after window was resized.
+
+
+## 3.21.3
+
+*    Bug fix: chart.clear() was not properly clearing the chart from memory in case chart was create with JSON config.
+*    Bug fix: in case precision was set on a Value Axis with small negative numbers, axis labels were not displayed.
+*    Bug fix: AmGauge legend was not showing x mark when clicked on legend entry.
+
+
+## 3.21.1
+
+*    Bug fix: some times “show all” button remained visible on full zoom-out if chart used logarithmic value axis.
+*    maxZoomFactor default value changed to  1000000 on Gantt chart. This helps to prevent non-accurate zoom on gantt chart.
+*    Bug fix: value axis could go slight out of specified min/max when zooming.
+
+
+## 3.21.0
+
+*    We changed line smoothing algorithm and now smoothed lines look much better.  Old properties bezierX and `bezierY` of AmCharts class 			are deprecated and the same properties were added for AMSerialChart class. So you can set horizontal and vertical tension of 				smoothed line for each chart individually. By default, the values are undefined and chart sets them to bezierX:4 and bezierY:20 for 		regular charts and bezierX:20 and bezierY:4 for rotated charts.
+*    rollOverGuide, rollOutGuide and `clickGuide` events were added to AxisBase class.
+*    rollOver, rollOut and click events were added to TrendLine class.
+*    Mouse wheel listeners are now added to the document only if mouseWheelZoooEnabled or mouseWheelScrollEnabled is set to true.
+*    Bug fix: legendPeriodValueText was not working properly if set individually on a StockGraph.
+*    Bug fix: useNegatvieColorIfDown: true was producing some JS errors.
+*    Bug fix: when zoomed-in to a very top of value axis, it could exceed maximum value.
+
+
+## 3.20.20
+
+*    “Zoom out” button sometimes remained visible even when fully zoomed out on a chart with logarithmic axis.
+*    Bug fix: strictMinMax with date-based value axis was not working.
+*    Bug fix: smoothedLine graphs were not rendered properly in the right-end of a graph when fillAlphawas set to > 0.
+
+
+## 3.20.19
+
+*    Bug fix: when balloon was close to top edge of the container, it did not change it’s orientation and was hidden behind container area.
+*    Bug fix: stock chart’s drawing/erasing buttons were not working properly on IE browsers.
+*    Bug fix: adding data to stock chart with usePeriod of ChartScrollbarSettings set to bigger period then minPeriod of Category 					AxesSettings could cause not all data to be shown (when working with small amounts of data).
+*    Bug fix: adding data to XY chart with scrollbars when at least one of the axis was date-based was causing stack overflow.
+*    Bug fix: legend height fixed with legend’s position set to absolute.
+*    Zooming Stock chart with mouse wheel improved.
+
+
+## 3.20.18
+
+*    In case 3D columns were used and there was a big gap in your data some parts of columns might remain visible while scrolling.
+*    Value axis minimum could go below 0 while zooming value axis, even if all the data was positive.
+*    Graph balloon was not hidden when showNextAvailable was set to true but there were no more data points.
+*    Some of the funnel ticks were shown above the slice.
+*    External legend with position set to left/right caused chart not to render.
+*    Mouse wheel zoom/scroll improved on stock chart.
+*    In case oneBalloonOnly of ChartCursor is set to true, it shows top-most graphs balloon if there are data points at the same position.
+
+
+## 3.20.17
+
+*    forceGap property added to AmGraph. If this is set `true`, the graph will always break the line if the distance in time between two 			adjacent data points is bigger than `gapPeriod x minPeriod`, even if `connect` is set to `true`.
+*    Bug fix: bulletColor was not respected if lineColorField was set.
+*    Bug fix: logarithmic axes of XY chart were zoomed-in incorrectly after data update.
+
+
+## 3.20.16
+
+*    Bug fix: class names were not added on Stock chart’s scrollbar even if chart.addClassNames was set to true.
+*    Bug fix: toggling parseDates from true to false on CategoryAxis could result JavaScript error.
+*    amcharts-scrollbar-horizontal and amcharts-scrollbar-vertical class names added to <g> of Scrollbar (depending on orientation of a 			scrollbar).
+
+
+## 3.20.15
+
+*    Export plugin updated.
+
+
+## 3.20.14
+
+*    Gantt chart was ignoring some of the fields like descriptionField, fillColorsField, etc.
+*    Min/max values of value axis could change on zoom-out to some different values comparing with initial.
+*    In some rare cases legend entries were arranged incorrectly.
+*    Plugins updated.
+
+
+## 3.20.13
+
+*    Fix: In case value axis had minimum/maximum set but real values were of a much bigger scale, chart performance used to drop 					significantly.
+*    Pie chart labels now trigger rollover/click events, same as Funnel chart.
+*    vResizeCursor with default value ns-resize and hResizeCursor with default value ew-resize added to ChartScrollbar.
+*    vResizeCursorHover, hResizeCursorHover, vResizeCursorDown and hResizeCursorDown properties added to ChartScrollbar. You can set CSS 			value and show different mouse pointers on roll-over and on click when using scrollbar grips. Default values are not set.
+*    Default value of dragCursorHover changed to cursor: move; cursor: grab; cursor: -moz-grab; cursor: -webkit-grab
+*    Default value of dragCursorDown changed to cursor: move; cursor: grab; cursor: -moz-grabbing; cursor: -webkit-grabbing
+*    Bug fix: stacked step graphs sometimes drew wrong fills.
+*    Bug fix: not all strings were translated if multiple languages on the same page charts were used.
+*    centerRotatedLabelsproperty was added to AxisBase. In case you have rotated labels on horizontal axis, you can force-center them using 		this property.
+*    Bug fix: it was impossible to click links in balloons.
+*    Stock chart performance with equalSpacing set to true improved.
+*    You can now access data items from data provider of Stock chart from which aggregated data for longer period was generated: 					dataItem.dataContext.rawData will hold array of raw data items.
+
+
+## 3.20.12
+
+*    Bug fix: In some cases scrolling Serial chart with labelText set on AmGraph could result JS error.
+*    Export plugin updated.
+
+
+## 3.20.10
+
+*    bandGradientRatio added to GaugeAxis and gradientRatio added to GaugeBand, allows creating radial gradients on bands.
+*    setStartValue(value) and setEndValue(value) methods added to GaugeBand. You can use them to create fine animations of your bands.
+*    Bug fix: If usePrefixes was set to true for GaugeAxis, it displayed numbers incorrectly.
+*    Bug fix: Legend was not firing roll-over and roll-out events if graph or slice was hidden.
+*    Bug fix: in some specific cases, when value axis without a graph was added to a chart, zoom-out button was not hidden even if user 			clicked on it.
+*    Bug fix: XY chart was not firing inited event if rendered in a hidden container.
+*    Bug fix: themes were broken after clear() method of stock chart was called.
+*    Bug fix: pie chart with additional legend items added using legend.data property was not hiding/showing slices when clicked on legend 			entry.
+*    Bug fix: if a chart was in a scrollable container, mouse wheel scrolling was not working on Chrome.
+*    Bug fix: mouseWheelZoomEnabled and mouseWheeScrollEnabled properties of PanelsSettings were not working properly on Stock chart.
+*    Bug fix: JS error occurred if maximum of ValueAxis was set to 0 and graph had only positive values.
+*    Bug fix: it was impossible to set custom markers for legend entries if useGraphSettings was set to true.
+*    Bug fix: Stock chart was treating null values as 0.
+*    Bug fix: stacked step graphs with fillColorsField or dashLengthField or some other fields set were drawing fills incorrectly.
+
+
+## 3.20.9
+
+*    combineLegend property with default value false added. If you set it to true, and you have some legend items set using legend.data 			property, both graph’s entries and those added using data property will be displayed.
+*    If showAllValueLabels of AmGraph is set to true, labels which are outside plot area will now also be displayed.
+*    Grid synchronization when synchronizeGrid is set to true improved.
+*    legendColorFunction added for AmGraph. It is called and the following attributes are passed: dataItem, formattedText, periodValues, 			periodPercentValues. It should return hex color code which will be used for legend marker.
+*    Bug fix: funnel chart displayed balloon in a wrong position if labels were disabled.
+*    Bug fix: Gauge chart was not displaying axis values if usePrefixes was set to true on GaugeAxis.
+
+
+## 3.20.8
+
+*    You can use absolute urls for ChartScrollbar dragIcon.
+*    Improved grid synchronizing of multiple value axes (when synchronizeGrid of AmSerialChart is set to true).
+*    Bug fix: bullets with custom alpha were gaining default opacity on roll-out.
+*    Bug fix: stock clear()  method was not clearing it’s own instance from AmCharts.charts array.
+*    Bug fix: Axes labels were not firing click events on iOS touch devices.
+*    Bug fix: If topMargin was set on PanelsSettings of Stock chart, temporary trend line (while drawing) had wrong y offset.
+
+
+## 3.20.7
+
+*    columnIndexField added to AmGraph. You can use it with non-stacked column graphs and specify order of columns of each category.
+*    Bug fix: logarithmic value axis balloon was not respecting precision setting, same with axis with useScientificNotation set to true.
+*    Bug fix: Legend with equalWidths set to false had labels overlapping with values.
+*    Bug fix: if newStack property was set on a first graph of value axis, chart produced a gap before the column.
+*    Bug fix: lineColorField was not respected by OHLC graph type.
+
+
+## 3.20.6
+
+*    Bug fix: zoom-out button was sometimes visible with logarithmic scale value axes even if it was fully zoomed-out.
+*    Bug fix: when zooming value axes, 3D columns were cropped incorrectly in some cases.
+*    Bug fix: maxSelectedSeries setting was not properly working with ChartScrollbar.
+
+
+## 3.20.5
+
+*    Improved mouse-wheel scroll with parseDates set to true, especially when gaps between data points were bigger than minPeriod duration.
+*    Bug fix: if updateOnReleaseOnly of value scrollbar was set to true, chart was not updated if grips were dragged to min/max of value 			axis.
+*    Bug fix: with equalWidths of AmLegend set to true, legend items were not properly positioned in case markerWidth was set to some bigger 		value.
+*    Bug fix: sum was incorrectly calculated if a graph was hidden and periodValueText was set to “sum”.
+*    Bug fix: PeriodSelector’s predefined periods were selecting one day less in some cases.
+
+
+## 3.20.4
+
+*    A lot of improvements related with charts and maps accessibility:
+
+*    tabIndex property added to: AmLegend, AmGraph, Title, Label, AmSlicedChart, ChartScrollbar and ChartCursor. In case you set it to some number, the chart will set focus on this element when user clicks tab key (after setting focus on all elements with lower tabIndex). When a focus is set, screen readers like h NVDA Screen reader will read label which is set using accessibleLabel property of the same elements. In case it’s ChartScrollbar or ChartCursor, you will be able to move Scrollbar or Cursor with cursor keys of your keyboard.  Note, at the moment not all browsers support tabIndex on SVG elements. At the moment Chrome and Opera do support this well. Here is full compatibility table.
+*    zoomOutButtonTabIndex added to AmRectangularChart. In case you set it to some number and user presses tab, the page will set focus on 			the zoom-out button once the browser will reach tabIndex. When focused, pressing enter will result zoom-out of the chart.
+*    accessibleLabel property added to AmLegend, with default value [[title]]. This label will be read by screen reader if chart.accessible 		is set to true (default) and user rolls-over the legend marker or focuses on it using tab key (in case tabIndex is set on AmLegend).
+*    accessibleLabel property added to ChartScrollbar with default value Zoom chart using cursor arrows.
+*    accessibleLabel of AmGraph default changed to [[title]] [[category]] [[value]]
+		Other changes:
+
+*    autoTransform property added to AmChart with default value false. If you set it to true and your chart div (or any of the parent div) 			has css scale applied, the chart will position mouse at a correct position. Default value is false because this operation consumes 			some CPU and quite a few people are using css transfroms.
+*    synchronizeGrid property with default value false added to AmSerialChart. If your chart has more than one value axes and you set this 			property to true, the chart will show grid at equal intervals. Note, this is experimental property in beta stage yet.
+*    Bug fix: if pie chart had depth3D set and marginBottom was set to 0, 3D part of a pie was hidden below the div area.
+*    Bug fix: if a slice of a pie was pulled-out initially, hovering over this slice showed moving balloon even if balloon.fixedPosition was 		set to true.
+*    Bug fix: panning of a AmRectangularChart (if enabled) was broken since last version.
+
+
+## 3.20.3
+
+*    Improved behavior of date-based axes when minPeriod is set to milliseconds (“fff”).
+*    Improved zoom with mouse wheel, now the chart respects selected range and adjust zoom step according to it – bigger step if long range 		of data selected, smaller step when less data selected.
+*    balloonTextFunction added to ValueAxis, you can use it to format any value axis balloon text.
+*    Bug fix: since 3.20.1 zooming of non-date-based serial chart with mouse wheel was broken.
+*    Bug fix:if useLineColorForBulletBorder of AmGraph was set to true and negativeLineColor was used, bullet borders used positive line 			color instead of negative.
+*    Another memory leak problem fixed (happened if you have export enabled and then created a chart and destroyed it by calling 					chart.clear() method).
+
+
+## 3.20.2
+
+*    Memory leak problem fixed (happened if you created a chart and then destroyed it by calling chart.clear() method).
+
+
+## 3.20.1
+
+*    Zooming of serial charts with mouse wheel improved – the chart zooms to the position of the mouse instead of simply zooming to the 			center. Note, mouseWheelZoomEnabled property of a chart must be set to true in order this to work.
+*    value step of a logarithmic value axis improved.
+*    In case useMarkerColorForValues property of AmLegend is set to true, value labels now respect color of data item.
+*    In case useMarkerColorForLabels property of AmLegend is set to true, both label and marker will change color to data item color. This 			is useful when you have a different negativeFillColors set on AmGraph and want this to be reflected in a legend.
+*    Bug fix: wrapped data labels inside columns were not vertically aligned.
+*    Bug fix: Radar chart was not displaying value axis title properly.
+
+
+## 3.20.0
+
+*    Since v 3.20.0 we added basic support of accessibility.
+*    Property accessible added to AmChart class, with default value true. When enabled, chart adds aria-label attributes to columns, bullets 		or map objects. You can control values of these labels using properties listed below. Note, not all screen readers support these 			tags. We tested this mostly with NVDA Screen reader. WAI-ARIA is now official W3 standard, so in future more readers will handle 			this well. We will be improving accessibility on our charts, so we would be glad to hear your feedback.
+*    Property, accessibleTitle added to AmChart class. This title will be read by screen reader.
+*    Property accessibleLabel added to AmGraph class, with default value [[title]] [[value]].
+*    Property accessibleLabel added to AmSlicedChart class, with default value [[title]]: [[percents]]% [[value]] [[description]]
+*    Bug fix: in some particular cases angular gauge was changing it’s position incorrectly while changing size of chart container.
+*    Bug fix: YTD button of PeriodSelector was not hidden even if no this year’s dates were available in the data.
+*    Bug fix: touchDuration property was affecting also clicks, not only touch events.
+
+
+## 3.19.6
+
+*    default value of svgIcons of PanelsSettings was changed to true.
+
+
+## 3.19.5
+
+*    animate plugin added to amcharts package, allows creating animated transitions from one data to another.
+*    properites minMarginLeft, minMarginRight, minMarginTop and minMarginBottom added to AmRectangularChart chart. If left side has a value 		axis and autoMargins is set to true (default), the margin of this side will be not less than set on minMarginLeft property, same 			with other sides.
+*    smoothedLine graph type now supports gradients
+*    color property added to GaugeAxis, specifies labels color of the axis.
+*    axisFrequency property added to ValueAxis, works with Radar chart only. If you have a big number of axes, this property will help you 			to show every x axis only.
+*    Bug fix: enabled property of ChartCursor was not working properly (if set to false).
+*    Bug fix: class name amcharts-balloon-div-[id] (where id is graph or axis id) was not set.
+*    Bug fix: in some particular cases axis guides might become invisible.
+*    Bug fix: a very quick scrollbar movement in some setups could produce JavaScript error.
+*    Bug fix: tapToActivate was not working properly on some devices.
+*    Bug fix: sometimes if zooming near the edges of the chart container div with ChartScrollbar, some of the data points were left outside 		the plot area.
+*    Bug fix: minor grid of logarithmic axis was not drawn properly.
+
+
+## 3.19.4
+
+*    New property, bulletHitAreaSize added to AmGraph. Default value not set. Useful for touch devices – if you set it to 20 or so, the 			bullets of a graph will have invisible circle around the actual bullet (bullets should still be enabled), which will be easier to 			touch (bullets usually are smaller and hard to hit).
+*    Bug fix: radial gradients of pie chart were shifted to incorrect position in some cases.
+*    Bug fix: chart.removeLegend() removed legend but did not expand chart area properly.
+*    Bug fix: if limitToGraph was set on ChartCursor and the graph was hidden, JavaScript error was produced.
+*    Bug fix: in some cases, when equalSpacing of CategoryAxis was set to true, first label of an axis was made bold even if it shouldn’t to 		be bold.
+
+
+## 3.19.3
+
+*    New property, touchClickDuration added to AmChart class. Default value is 0, but if you set it to 200 (milliseconds) or so, the chart 			will fire clickGraphItem or clickSlice (AmSlicedChart) only if user holds his finger for 0.2 seconds (200 ms) on the colum/bullet/			slice.
+*    Touch events behavior improved. clickGraphItem event will not be fired if user moved a finger (dragged or selected) over a chart.
+*    Bug fix: radial gradients of pie chart were shifted to incorrect position on Safari.
+*    Bug fix: Firefox produced JavaScript error if chart was loaded in a hidden iFrame.
+
+
+## 3.19.2
+
+*    Code cleanup.
+
+
+## 3.19.1
+
+*    JS error could occur in some cases if responsive plugin was used.
+
+
+## 3.19.0
+
+*    dragCursorHover with default value cursor: cursor: grab; cursor:-moz-grab; cursor:-webkit-grab; and dragCursorDown with default value cursor: cursor: grab; cursor:-moz-grabbing; cursor:-webkit-grabbing; properties added to ChartScrollbar. This enables hand cursor when hovering over the selected area of ChartCursor. Does not work with some older browsers.
+*    Patterns now supports URI.
+*    Bug fix: time stamp instead of Date Object was passed to  categoryBalloonFunction of CategoryAxis.
+*    Bug fix: angular gauge changed it size after chart.invalidateSize() method was called, event if the size of the div was not changed.
+*    Bug fix: minSelectedTime and maxSelected time was ignored by ChartScrollbar.
+*    Bug fix: legend was not properly displayed if legend.position was changed at run time.
+*    Bug fix: XY chart was not adjusting margins if on initial render the chart div was not visible.
+*    Bug fix: export problem with XY chart fixed.
+*    Bug fix: axis labels were drawn differently from initial view after the chart was zoomed-in and then zoomed-out.
+*    Bug fix: axis was not always firing axisZoomed event;
+*    Bug fix: legend marker switch position was not exactly in the center of the marker in some cases.
+*    Bug fix: grid was overlapping data labels in some cases.
+*    Bug fix: Some issues with Mekko chart and empty values fixed.
+*    Bug fix: Gant chart produced JavaScript error if dataProvider was undefined.
+*    Bug fix: With equalSpacing set to true, predefined period of StockChart was not always properly selected.
+
+
+## 3.18.6
+
+*    Bug fix: it was impossible to turn off category balloon by setting categoryBalloonEnabled property of ChartCursor to false if initially it was set to true.
+*    Bug fix: roll-over balloon was not displayed if a fixedPosition of AmBalloon was set to false and the column’s top was out of plot area.
+*    Bug fix: if equalSpacing of CategoryAxesSettings was set to true (Stock chart) default period was not always correctly set.
+*    Bug fix: AmGanttChart produced JS error if no dataProvider was set.
+*    Data loader and export plugins updated.
+
+
+## 3.18.5
+
+*    Minor bug fix release
+
+
+## 3.18.4
+
+*    Bug fix: In case data loader plugin was used, chart could generate JavaScript error if user hovered over chart while loading data.
+*    Bug fix: zoom-out button was sometimes visible even the chart was fully zoomed-out.
+*    Bug fix: glueToTheEnd of Stock chart was not functioning properly when set to true.
+*    Bug fix: value axis balloon (if enabled) was visible ant pointed to a wrong position when cursor was shown using cursor.showCursorAt(*  		category) method.
+*    Bug fix: onePanelOnly of ChartCursorSettings was not working when set to true.
+*    Bug fix: in some particular cases letters of Stock events were disappearing when moving mouse over plot area.
+*    Bug fix: categoryBalloonFunction of ChartCursor was not working unless categoryBalloonText was set to undefined.
+*    Solved conflict with prototype.js library.
+
+
+## 3.18.3
+
+*    Stock chart legend did not reset value text to periodValueTextRegular after data sets were compared.
+*    Improved filling of a graph if fillColorField is set.
+*    Graph balloon is now hidden if user rolls-over StockEvent icon.
+*    Bug fix: graphBulletSize of ChartCursor was ignored when valueBalloonsEnabled was set to false.
+*    Bug fix: when labelText was set on AmGraph, it used to draw empty text nodes for each data point, even if no text was displayed.
+*    Bug fix: “changed” event was not fired by AmSerialChart.
+
+
+## 3.18.2
+
+*    Bug fix: JS error happened if stacked column chart has column with 0 value and labels on columns were enabled.
+*    Bug fix: axis.balloon.enabled = false did not disabled axis balloons.
+*    Bug fix: minor grid on logarithmic axis was drawn chaotically in some cases.
+*    Bug fix: if logarithmic axis had treatZeroAs set, axis was not zooming.
+*    Bug fix: valueLineBalloonEnabled of ChartCursor was not applied if changed from true to false at run time.
+*    Bug fix: Stock event balloon was not hidden on roll-out.
+*    improved animations when limitToGraph is set on ChartCursor.
+
+
+## 3.18.1
+
+*    Bug fix: zoom-out button was disappearing after chart.validateData() call on XY chart.
+
+
+## 3.18.0
+
+*    Changes at a glance:
+*    Code cleanup and restructure for better performance, smaller files, reduced memory use!
+*    Smoother animation!
+*    Pinch-zoom on phones, tablets and desktops (the latter is Chrome only for now)!
+*    Zooming/scrolling of ValueAxis on Serial and GANTT charts!
+*    Improved zooming of logarithmic value axes.
+ 
+
+*    All changes:
+*    valueScrollbar added to SerialChart. Adds ChartScrollbar to ValueAxis. You can set autoGridCount to true to enable axis labels. This 	trick can also be used by XY chart (albeit by using regular chartScrollbar property, not valueScrollbar). Here is a demo of serial chart with value scrollbar.
+*    valueZoomable property added to ChartCursor (default: false). If set to true, makes the cursor zoom value axis(es) as well. Works best if valueScrollbar is added to a chart. Here is a GANTT chart with zoomable value axis.
+*    You can now pan XY chart with chart cursor (previously it was only possible to select area for zoom-in). To enable this feature, set pan property of ChartCursor to true. To enable pan of value axis on Serial chart, set valueZoomable of ChartCursor to true. XY Chart with pan enabled demo.
+*    maxZoomFactor is now property of AmRectangularChart, with default value 20. Specifies max zoom factor of ValueAxis.
+*    drop property (default: false) added to AmBalloon (not supported by IE8). Allows having drop-shaped balloons. Note, these balloons will not check for overlapping with other balloons, or if they go outside plot area. It also does not change pointer orientation automatically based on its vertical position like regular balloons do. You can use pointerOrientation property if you want it to point to different direction. Demo of a chart using this kind of balloon.
+*    pointerOrientation property added to AmBalloon, with default value down and other possible values "up", "down", "left", and "right". Works only if balloon.drop set to true.
+*    zoomOutValueAxes() method added To AmRectangularChart. When invoked, it zooms-out value axes.
+*    gradientType added to AmPieChart. The default is now at “radial”. (previously chart supported only linear gradients) It makes a lot more sense to have radial gradients on pie chart. Note, IE8 does not support this. Here is pie chart with gradient fill example.
+*    minValue and maxValue properties added to AmXYChart. These can be used to adjust size/scale of bubbles. If these properties are not set, the bubble with smallest value will be of minBulletSize and bubble with biggest value will be of maxBulletSize. However, you might want bubble size to change relative to 0 or some other value. In this case you can use minValue and maxValue properties. Note, if you use these two settings, you might also want to set minBulletSize to 0.
+*    balloonText property added to TrendLine. When set, enables displaying a roll-over balloon.
+*    onShowCursor, zoomStarted, panning events added to ChartCursor.
+*    limitToGraph property added to ChartCursor. If set to an id or a reference to AmGraph object, CategoryAxis cursor line will be limited to this graph instead of being drawn through full height of plot area. Note, this works with serial chart only. Also, cursorPosition of ChartCursor must be set to middle.
+*    syncWithCursor(cursor) method added to ChartCursor. Allows to sync one serial chart’s cursor with another chart’s cursor.
+*    balloon property added to AmGraph and AxisBase. Allows customizing axes and graphs balloons individually (only when ChartCursoris used). Note: the balloon object is not created automatically, you should create it before setting properties, for example: graph.balloon = {drop:true} and not graph.balloon.drop = true.
+*    valueLineBalloonEnabled now adds value balloons to all available value axes (both Serial and XY chart).
+*    animationFinished event added to AmChart. It is dispatched when graphs or slices finish animating.
+*    zoomOutAxes property added to PanelsSettings (default: true. Specifies if zoomed-in value axes should be zoomed-out when user changes selected period with PeriodSelector.
+*    processTimeout property added to AmChart and AmStockChart (default: 0). If you set it to 1 or some bigger value, chart will be built in chunks instead of all at once. This is useful if you work with a lot of data and the initial build of the chart takes a lot of time, which freezes the whole web application by not allowing other processes to do their job while the chart is busy.
+*    Serial chart now has property processCount (default 1000). If processTimeout is > 0, 1000 data items will be parsed at a time, then the chart will make pause and continue parsing data until it finishes.
+*    buildStarted event added to AmChartand AmStockChart. Fired just before the chart starts to build itself for the first time. Note: you might need to set processTimeout to > 0 value in order to register this event properly.
+*    You can set categoryAxisDateFormat of ChartCursor to undefined now. If set cursor’s category axis balloon will use current date format of category axis.
+*    Changed default behavior: the order of the graphs is now determined by the order they are defined in graphs array, regardless of graph type. Previously line graphs always came on top unless specifically specified to go under columns.
+*    Bug fix: chart cursor was not working properly on mekko chart (variable column width chart).
+*    Bug fix: addressed pan freezing issues introduced in Chrome v47.
+*    Bug fix: Microsoft Edge was ignoring touch-move events.
+*    Bug fix: stacked areas on date-based chart could start on wrong place after graph was hidden.
+*    Bug fix: AmAngularGauge was broken if legend was added.
+*    Bug fix: showNextAvailable property of ChartCursor was ignored by legend.
+*    Bug fix: Pyramid chart did not display the tip of the pyramid in some cases.
+*    Bug fix: init event was not fired by AmAngularGauge.
+*    Bug fix: sometimes init, rendered and draw events were fired too early, before the chart was actually drawn.
+*    Bug fix: mouse wheel zoom was not working on IE8.
+*    Bug fix: if autoSize of AmChart was set to false, mouse position was not properly detected after page was scrolled.
+*    Bug fix: selectFromStart property of PeriodSelector was not working properly with period button which used YYYY period.
+*    Bug fix: it was impossible to delete guides which were added via chart config (using eraser tool of Stock chart).
+*    Bug fix: string-based dates in guides were not being parsed properly if they contained only numbers.
+
+
+## 3.17.3
+
+*    Bug fix: label position of columns with graph.negativeBase not equal to valueAxis.baseValue was wrong in some cases.
+*    Bug fix: Value balloons of ChartCursor were displayed even if the value was out of plot area and this didn’t look right.
+*    Bug fix: some issues fixed with ChartCursor property leaveCursor set to true.
+*    Bug fix: Legend marker was not dashed if columns had dashed outlines and useGraphSettings was set to true.
+*    Bug fix: Guide without toValue was not displaying roll-over balloon.
+*    Bug fix: Stock chart’s scrollbar was not using the same font as all the panels used.
+*    You can now translate am/pm strings (used when formatting time). To do this, add "am":"translatedAM", "pm":"translatedPM" to your lang 		file.
+*    zeroGridAlpha property added to ValueAxis. Allows to set specific opacity for zero grid line (you can hide it at all if you set it to 			0).
+
+
+## 3.17.2
+
+*    Bug fix: step line graph with minPeriod set to MM (month) was not drawn properly.
+*    Bug fix: Stock event with triangleLeft bullet produced JavaScript error.
+*    Bug fix: If showEventsOnComparedGraphs was set to true (StockGraph property), events were shown on all panels instead of one.
+*    Bug fix: Responsive plugin and IE11 could result JS error in some cases.
+
+
+## 3.17.1
+
+*    Bug fix: ChartCursor was not working if autoResize was set to false (since 3.16.0 version only)
+*    Problems with minPeriod="fff" and Stock chart fixed.
+
+
+## 3.17.0
+
+*    widthField property added to CategoryAxis. You can specify relative width for your columns using this field and produce Mekko chart 			using this new feature (demo coming)
+*    You can add listeners to chart using listeners property not only via JSON config, but directly on a chart object, like: chart.listeners 		= [{event:"dataUpdated", method:handleDataUpdate}]
+*    gradientRotation property added to AmLegend. Works only with custom legend data.
+*    Bug fix: if Gantt chat had more categories than colors in chart.colors array, random color was chosen for each segment instead of each 		category.
+*    Bug fix: it was not possible to change graph color dynamically (since previous version only).
+*    P.S. Most of the big changes in this version were made for maps, not charts.
+
+
+## 3.16.0
+
+*    Charts now use SVG icons for scrollbar, zoom-out and others (IE8 keep using PNG). This makes icons look good on retina displays on all 		resolutions. New AmChart property svgIcons with default value true was created. If you want PNG icons to be used all the time, set 			this property to false.
+*    Default value of zoomOutButtonImage of AmRectangularChart changed to lens. If svgIcons is set to true (default) .svg will be added to 			the file name if SVG is supported by the browser, otherwise – .png.
+*    Chart behavior on touch events improved.
+*    tapToActivate property added to AmChart, with default value true. This is our new approach to solve issues with scrolling of a page on 		touch devices. Charts which require gestures like swipe (charts with scrollbar/cursor) or pinch (maps) used to prevent regular page 		scrolling and could result page to stick to the same spot if the chart occupied whole screen. Now, in order these gestures to start 		working user has to touch the chart/maps once. Regular touch events like touching on the bar/slice/map area do not require the first 			tap and will show balloons and perform other tasks as usual. If you have a map or chart which occupies full screen and your page 			does not require scrolling, set tapToActivate to false – this will bring old behavior back.
+*    leaveAfterTouch property added to ChartCursor and ChartCursorSettings with default value true. This makes cursor and balloons to remain 		after user touches the chart.
+*    We changed default value of fixedPosition of AmBalloon to true. We think this brings a better usability for touch devices. This results 		roll-over balloon to point to a fixed position of a slice/column/bullet instead of following the mouse. Note, AmMap overrides 				fixedPosition to false, as countries are of a irregular shape and it’s quite often that middle point of a country is outside the 			country itself.
+*    showBullet property added to StockEvent, with default value false. If you set it to true, the data point will display both event and 			regular (if set) bullet.
+*    recalculateValue added to StockGraph. Possible values are Open, Close, High, Low, Average and Sum. There is no default value set – 			graph uses it’s periodValue when calculating changes. For example, the graph’s periodValue is Close. This means that when data is 			grouped to longer periods (months for example) when recalculating, the graph will use Close value of the first period of the 				selection as base value and will compare each months Close value to it. If you set recalculateValue to Open, the first value of a 			month will be used as base value.
+*    Second attribute, skipEvents added to validateNow method of AmStockChart.
+*    autoDisplay property added to AmChart with default value false. If you set it to true the chart will automatically monitor changes of 			display style of chart’s container (or any of it’s parents) and will render chart correctly if it is changed from none to block. We 		recommend setting it to true if you change this style at a run time, as it affects performance a bit.
+*    Bug fix: roll-over balloon could hide under legend if legend position was right or left.
+*    Bug fix: if chart has more graphs than colors in colors array of a chart, graph’s color was chosen automatically. The problem was that 		this color was chose each time user hid/showed the graph.
+*    Bug fix: setting font sizes using CSS not worked properly in some cases.
+*    Bug fix: chart’s title ignored bold = false setting and always showed bold title.
+
+
+## 3.15.2
 
 *    Bug in new Microsoft Edge browser caused category labels and some other texts to disappear. The problem was fixed and the bug reported.
 *    Bug fix: Gantt chart used to zoom to wrong dates if minimum/maximum was set.
@@ -10,7 +496,6 @@
 
 
 ## 3.15.1
-
 
 *    New feature which allowed to add listeners in JSON config was not working properly in some cases.
 *    centerLabels property added to AxisBase. It always force-centers labels of date-based axis (equalSpacing must not be set to true).
@@ -21,7 +506,6 @@
 
 
 ## 3.15.0
-
 
 *    Trend lines now support images. You can have image on both end and start of a trend line. It can be GIF, PNG or SVG (SVG won’t be visible on IE8) images. initialImage and finalImage properties and Image class were added to support this feature.
 *    Annotation capabilities of the Export plugin were dramatically enhanced with the ability to add text, shapes, lines and arrows, as well as changing of opacity of items. More info.
@@ -74,7 +558,8 @@
 
 ## 3.14.3
 
-*    Chart automatically detects path (chart.path variable) to images and other files if amcharts.js or ammap.js file is included as <script> in the document source.
+*    Chart automatically detects path (chart.path variable) to images and other files if amcharts.js or ammap.js file is included as 
+		`<script>` in the document source.
 *    Bug fix: click on columns.bullet was not registered if valueLineEnabled was set to true on ChartCursor.
 *    Bug fix: chart scrollbar could be messed up if graph.baseValue was set.
 
